@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { authRequest } from "../services/organization";
 
 import Sidebar from "../components/Sidebar";
 
 function MainLayout() {
+  useEffect(() => {
+    authRequest({ user: "USERNAME" }).then((response) => {
+      console.log(response);
+      // console.log(response.headers);
+    });
+  });
   return (
     <div className="wrapper">
       <div className="row">
