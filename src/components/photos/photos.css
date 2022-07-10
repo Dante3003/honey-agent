@@ -1,0 +1,49 @@
+.photos {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.photos__body {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.photos__card {}
+
+.photo-container {
+  position: relative;
+}
+
+.photo-container__delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+}
+
+.photos__image {
+  max-width: 160px;
+}
+
+.photos__name {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #3B3B3B;
+}
+
+.photos__date {
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #808080;
+}
+
+.photos__add-btn {
+  margin-top: 20px;
+}

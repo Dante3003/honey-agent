@@ -1,0 +1,40 @@
+.contacts {
+    margin-top: 32px;
+}
+
+.contacts__title {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin-bottom: 20px;
+}
+
+.contacts__body {
+    display: flex;
+    gap: 12px;
+}
+
+.contacts__captions {}
+
+.contacts__caption {
+    margin-bottom: 12px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 160%;
+    color: #3B3B3B;
+}
+
+.contacts__items {}
+
+.contacts__item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #3B3B3B;
+    margin-bottom: 12px;
+}
+
+.contacts__email {
+    color: #82B284;
+    letter-spacing: 0.25px;
+}

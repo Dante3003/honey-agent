@@ -1,13 +1,292 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  border: 0;
+  user-select: none;
+  outline: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input[type="button"] {
+  cursor: pointer;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #111;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/*Конец обнуления*/
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3B3B3B;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22.4px;
+  color: #82B284;
+  background: #fff;
+  border: 1px solid #E5E5E5;
+  border-radius: 2px;
+  padding: 10px 13px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #98C88C;
+}
+
+.btn:active {
+  color: #58A742;
+}
+
+.wrapper {
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  /* max-width: 1100px; */
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.divider_bottom {
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.row {
+  display: flex;
+}
+
+.row--align-center {
+  align-items: center;
+}
+
+.row--gap {
+  gap: 10px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  position: relative;
+  z-index: 1;
+  background: #82b183;
+}
+
+.menu__list {
+  height: 100%;
+  display: flex;
+}
+
+.list-container:first-child {
+  margin-bottom: auto;
+}
+
+.list-item__button {
+  padding: 20px 15px;
+  color: #fff;
+}
+
+.list-item__button:hover,
+.list-item__button.active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.list-item__button:active {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.list-item__button>svg {
+  width: 100%;
+  max-width: 20px;
+}
+
+.sidebar {
+  position: relative;
+  background: #f7f7f7;
+  overflow: hidden;
+  max-width: 0;
+  transition: max-width 0.8s ease-in-out;
+  -moz-transition: max-width 0.8s ease-in-out;
+  -webkit-transition: max-width 0.8s ease-in-out;
+  -o-transition: max-width 0.8s ease-in-out;
+}
+
+.sidebar.active {
+  max-width: 350px;
+  transform: translate(0);
+}
+
+.sidebar:before {
+  position: absolute;
+  content: "";
+  box-shadow: 2px 0px 20px rgba(0, 0, 0, 1);
+  top: 0;
+  right: -1px;
+  height: 100%;
+  width: 1px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sidebar__container {
+  height: 100%;
+}
+
+.sidebar__description {
+  padding: 30px 70px;
+  text-transform: uppercase;
+  color: #2e2e2e;
+  text-align: center;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.sidebar__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.sidebar__actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__action {
+  color: #82b183;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+.sidebar__action:hover,
+.sidebar__action.active {
+  background: rgba(125, 125, 125, 0.15);
+}
+
+.sidebar__action:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar__icon-container * {
+  fill: #82b183;
+  height: 30px;
+}
+
+.content {
+  flex: 1 1 auto;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 40px 0 32px;
+}
+
+.footer__text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #B9B9B9;
+  margin-bottom: 16px;
 }

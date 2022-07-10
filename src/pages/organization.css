@@ -1,0 +1,32 @@
+.organiztion__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 40px;
+    background-color: #fff;
+}
+
+.organization__breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #82B284;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.header {
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.organization__actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 16px;
+}
+
+.organization__action {
+    cursor: pointer;
+}
