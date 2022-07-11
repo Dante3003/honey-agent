@@ -1,12 +1,18 @@
+import { parseDate } from "../../utils/parsers";
+
 import "./organization-info.css";
 
 import EditIcon from "../../assets/icons/edit.svg";
 
-function OrganizationInfo() {
+type TProps = {
+  organization: any;
+};
+
+function OrganizationInfo({ organization }: TProps) {
   return (
     <div className="organization-info">
       <div className="row organization-info__title">
-        <h2>Перспективные захоронения</h2>
+        <h2>{organization.shortName}</h2>
         <img src={EditIcon} alt="edit" />
       </div>
       <div>
@@ -22,12 +28,17 @@ function OrganizationInfo() {
             <h6 className="organization-info__caption">Тип:</h6>
           </div>
           <div className="organization-info__items">
+            <p className="organization-info__item">{organization.name}</p>
             <p className="organization-info__item">
-              ООО Фирма “Перспективные захоронения”
+              {organization.contract.no} от{" "}
+              {parseDate(organization.contract.issue_date)}
             </p>
-            <p className="organization-info__item">12345 от 12.03.2015</p>
-            <p className="organization-info__item">ООО</p>
-            <p className="organization-info__item">Агент, Подрядчик</p>
+            <p className="organization-info__item">
+              {organization.businessEntity}
+            </p>
+            <p className="organization-info__item">
+              {organization.type.join(", ")}
+            </p>
           </div>
         </div>
       </div>

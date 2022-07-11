@@ -8,8 +8,8 @@ type TContact = {
   email: string;
 };
 
-export const getContacts = (contactId: string) =>
+export const getContacts = (contactId: number) =>
   api.get(`/contacts/${contactId}`);
 
-export const updateContacts = (contactId: string, params: TContact) =>
+export const updateContacts = (contactId: number, params: TContact) =>
   api.patch(`/contacts/${contactId}`, params);

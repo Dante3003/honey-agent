@@ -7,8 +7,7 @@ import Sidebar from "../components/Sidebar";
 function MainLayout() {
   useEffect(() => {
     authRequest({ user: "USERNAME" }).then((response) => {
-      console.log(response);
-      // console.log(response.headers);
+      // save token to local or session storage and set them to axios headers
     });
   });
   return (

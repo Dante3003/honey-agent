@@ -110,9 +110,7 @@ body {
 }
 
 .btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
   font-weight: 600;
   font-size: 14px;
   line-height: 22.4px;

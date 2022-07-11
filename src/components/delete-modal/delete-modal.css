@@ -1,0 +1,72 @@
+.modal {
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.open {
+  opacity: 1;
+  z-index: 999;
+  visibility: visible;
+  pointer-events: all;
+  transition: opacity 0.3s ease-in-out;
+
+}
+
+.modal__back {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__dialog {
+  background-color: #fff;
+  padding: 24px;
+  box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.15);
+}
+
+.delete-modal__title {
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #3B3B3B;
+}
+
+.delete-modal__text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #3B3B3B;
+  margin-bottom: 50px;
+}
+
+.delete-modal__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delete-modal__button {}
+
+.delete-modal__close {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #B9B9B9;
+}
+
+.delete-modal__sumbit {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #82B284;
+}
