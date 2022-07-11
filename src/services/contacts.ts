@@ -1,15 +1,8 @@
 import api from "./api";
+import { TContacts } from "../types/contacts";
 
-type TContact = {
-  lastname: string;
-  firstname: string;
-  patronymic: string;
-  phone: string;
-  email: string;
-};
-
-export const getContacts = (contactId: number) =>
+export const getContactsRequest = (contactId: number) =>
   api.get(`/contacts/${contactId}`);
 
-export const updateContacts = (contactId: number, params: TContact) =>
+export const updateContactsRequest = (contactId: number, params: TContacts) =>
   api.patch(`/contacts/${contactId}`, params);

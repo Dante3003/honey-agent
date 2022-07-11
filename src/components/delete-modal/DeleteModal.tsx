@@ -1,5 +1,7 @@
 import "./delete-modal.css";
 
+import AppModal from "../app-modal/AppModal";
+
 type TProps = {
   onClose: () => void;
   onSubmit: () => void;
@@ -8,29 +10,28 @@ type TProps = {
 
 function DeleteModal({ isOpen, onClose, onSubmit }: TProps) {
   return (
-    <div className={isOpen ? "modal open" : "modal"}>
-      <div className="modal__back" onClick={onClose}>
-        <div className="modal__dialog">
-          <div className="modal-content">
-            <h3 className="delete-modal__title">Удалить карточку</h3>
-            <p className="delete-modal__text">
-              Отправить карточку организации в архив?
-            </p>
-            <div className="delete-modal__buttons">
-              <button className="delete-modal__button delete-modal__close">
-                Отмена
-              </button>
-              <button
-                className="delete-modal__button delete-modal__sumbit"
-                onClick={onSubmit}
-              >
-                Удалить
-              </button>
-            </div>
-          </div>
+    <AppModal isOpen={isOpen} onClose={onClose}>
+      <div className="modal-content">
+        <h3 className="delete-modal__title">Удалить карточку</h3>
+        <p className="delete-modal__text">
+          Отправить карточку организации в архив?
+        </p>
+        <div className="delete-modal__buttons">
+          <button
+            className="delete-modal__button delete-modal__close"
+            onClick={onClose}
+          >
+            Отмена
+          </button>
+          <button
+            className="delete-modal__button delete-modal__sumbit"
+            onClick={onSubmit}
+          >
+            Удалить
+          </button>
         </div>
       </div>
-    </div>
+    </AppModal>
   );
 }
 

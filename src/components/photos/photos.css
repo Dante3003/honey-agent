@@ -7,6 +7,8 @@
   display: flex;
   gap: 24px;
   margin-top: 20px;
+  max-width: 55%;
+  overflow-x: auto;
 }
 
 .photos__card {}

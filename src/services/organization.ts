@@ -1,20 +1,8 @@
 import api from "./api";
+import { TOrganization } from "../types/organization";
 
 type TAuthParams = {
   user: string;
-};
-
-type TContract = {
-  no: string;
-  issue_date: string;
-};
-
-type TOrganization = {
-  name: string;
-  shortname: string;
-  businessEntity: string;
-  contract: TContract;
-  type: string;
 };
 
 export const authRequest = (params: TAuthParams) =>

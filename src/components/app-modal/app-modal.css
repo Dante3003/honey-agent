@@ -1,0 +1,40 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open {
+  opacity: 1;
+  z-index: 100;
+  visibility: visible;
+  pointer-events: all;
+  transition: opacity 0.3s ease-in-out;
+
+}
+
+.modal__back {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+}
+
+.modal__dialog {
+  z-index: 105;
+  background-color: #fff;
+  padding: 24px;
+  box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.15);
+}

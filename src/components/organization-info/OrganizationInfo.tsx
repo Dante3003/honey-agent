@@ -6,14 +6,17 @@ import EditIcon from "../../assets/icons/edit.svg";
 
 type TProps = {
   organization: any;
+  openUpdateModal: () => void;
 };
 
-function OrganizationInfo({ organization }: TProps) {
+function OrganizationInfo({ organization, openUpdateModal }: TProps) {
   return (
     <div className="organization-info">
       <div className="row organization-info__title">
         <h2>{organization.shortName}</h2>
-        <img src={EditIcon} alt="edit" />
+        <button onClick={openUpdateModal}>
+          <img src={EditIcon} alt="edit" />
+        </button>
       </div>
       <div>
         <div className="organization-info__subtitle">

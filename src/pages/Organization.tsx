@@ -4,6 +4,7 @@ import { AxiosResponse } from "axios";
 import {
   getOrganizationRequest,
   deleteOrganizationRequest,
+  updateOrganizationRequest,
 } from "../services/organization";
 import { TPhoto, TOrganization } from "../types/organization";
 
@@ -13,6 +14,7 @@ import OrganizationInfo from "../components/organization-info/OrganizationInfo";
 import Contacts from "../components/contacts/Contacts";
 import Photos from "../components/photos/Photos";
 import DeleteModal from "../components/delete-modal/DeleteModal";
+import OrganizationUpdateModal from "../components/organization-update-modal/OrganizationUpdateModal";
 
 import ArrowLeftIcon from "../assets/icons/arrow-left.svg";
 import LinkIcon from "../assets/icons/linked.svg";
@@ -22,6 +24,7 @@ import RotationIcon from "../assets/icons/rotation.svg";
 function Organization() {
   const [organization, setOrganization] = useState<TOrganization>();
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState<boolean>(false);
+  const [isUpdateModalOpen, setisUpdateModalOpen] = useState<boolean>(false);
   useEffect(() => {
     getOrganizationRequest(12).then((response: AxiosResponse) => {
       setOrganization(response.data);
@@ -41,7 +44,9 @@ function Organization() {
     if (organization) {
       setOrganization({
         ...organization,
-        photos: organization.photos.filter((photo) => photo.name !== photoName),
+        photos: organization.photos.filter(
+          (photo: TPhoto) => photo.name !== photoName
+        ),
       });
     }
   }
@@ -53,6 +58,16 @@ function Organization() {
     deleteOrganizationRequest(organization.id).then(() => {
       setisDeleteModalOpen(false);
     });
+  }
+
+  function updateOrganization(updatedOrganization: TOrganization) {
+    if (organization) {
+      updateOrganizationRequest(organization.id, updatedOrganization).then(
+        () => {
+          setOrganization(updatedOrganization);
+        }
+      );
+    }
   }
 
   function openDeleteModalHandler() {
@@ -96,7 +111,10 @@ function Organization() {
       </header>
       {organization && (
         <div className="container">
-          <OrganizationInfo organization={organization} />
+          <OrganizationInfo
+            organization={organization}
+            openUpdateModal={() => setisUpdateModalOpen(true)}
+          />
           <Contacts contactId={organization.contactId} />
           <Photos
             photos={organization.photos}
@@ -110,6 +128,12 @@ function Organization() {
         isOpen={isDeleteModalOpen}
         onClose={closeDeleteModalHandler}
         onSubmit={removeOrganization}
+      />
+      <OrganizationUpdateModal
+        organization={organization!}
+        isOpen={isUpdateModalOpen}
+        handleClose={() => setisUpdateModalOpen(false)}
+        handleSubmit={updateOrganization}
       />
     </div>
   );
