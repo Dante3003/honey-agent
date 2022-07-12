@@ -60,13 +60,17 @@ function Organization() {
     });
   }
 
-  function updateOrganization(updatedOrganization: TOrganization) {
+  function updateOrganization(updatedOrganization: any) {
     if (organization) {
-      updateOrganizationRequest(organization.id, updatedOrganization).then(
-        () => {
-          setOrganization(updatedOrganization);
-        }
-      );
+      const formdata = new FormData();
+      formdata.append("shortName", updatedOrganization.shortName);
+      formdata.append("businessEntity", updatedOrganization.businessEntity);
+      formdata.append("name", updatedOrganization.name);
+      formdata.append("type", updatedOrganization.type);
+      updateOrganizationRequest(organization.id, formdata).then(() => {
+        setOrganization(updatedOrganization);
+        setisUpdateModalOpen(false);
+      });
     }
   }
 
@@ -124,17 +128,21 @@ function Organization() {
           />
         </div>
       )}
-      <DeleteModal
-        isOpen={isDeleteModalOpen}
-        onClose={closeDeleteModalHandler}
-        onSubmit={removeOrganization}
-      />
-      <OrganizationUpdateModal
-        organization={organization!}
-        isOpen={isUpdateModalOpen}
-        handleClose={() => setisUpdateModalOpen(false)}
-        handleSubmit={updateOrganization}
-      />
+      {organization && (
+        <div>
+          <DeleteModal
+            isOpen={isDeleteModalOpen}
+            onClose={closeDeleteModalHandler}
+            onSubmit={removeOrganization}
+          />
+          <OrganizationUpdateModal
+            organization={organization!}
+            isOpen={isUpdateModalOpen}
+            handleClose={() => setisUpdateModalOpen(false)}
+            handleSubmit={updateOrganization}
+          />
+        </div>
+      )}
     </div>
   );
 }

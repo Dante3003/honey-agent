@@ -288,3 +288,48 @@ body {
   color: #B9B9B9;
   margin-bottom: 16px;
 }
+
+.app-input {
+  position: relative;
+  min-width: 230px;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 15px;
+}
+
+.app-input__item {
+  width: 100%;
+  background: none;
+  padding: 10px 12px;
+  border: 1px solid #00000030;
+  color: #3b3b3b;
+  border-radius: inherit;
+}
+
+.app-input__item:hover {
+  border-color: #00000050;
+}
+
+.app-input__item:focus {
+  border-color: #00000075;
+}
+
+.app-input__label {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  padding: 0px 5px;
+  font-size: 14px;
+  background: #fff;
+  color: #808080;
+  transform: translate(14px, 11px) scale(1);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transform-origin: top left;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.app-input__item:focus+.app-input__label,
+.app-input__item:valid+.app-input__label {
+  transform: translate(14px, -6px) scale(0.75);
+}

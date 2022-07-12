@@ -7,10 +7,10 @@ export type TOrganization = {
   id: number;
   contactId: number;
   name: string;
-  shortname: string;
+  shortName: string;
   businessEntity: string;
   contract: TContract;
-  type: string;
+  type: string[];
   photos: TPhoto[];
 };
 

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import AppModal from "../app-modal/AppModal";
+import { TOrganization } from "../../types/organization";
+import { stringToDate } from "../../utils/parsers";
 
 import "./organization-update-modal.css";
 
-import { TOrganization } from "../../types/organization";
+import AppModal from "../app-modal/AppModal";
 
 type TProps = {
   organization: TOrganization;
@@ -19,23 +20,24 @@ function OrganizationUpdateModal({
   organization,
 }: TProps) {
   const [organisationName, setOrganisationName] = useState(
-    organization.shortname || ""
+    organization.shortName || ""
   );
   const [fullName, setFullName] = useState(organization.name || "");
   const [contractNo, setContractNo] = useState(organization.contract.no || "");
   const [contractDate, setContractDate] = useState(
-    organization.contract.issue_date || ""
+    stringToDate(organization.contract.issue_date)
   );
   const [form, setForm] = useState(organization.businessEntity || "");
-  const [type, setType] = useState(organization.type || "");
+  const [type, setType] = useState<string>(organization.type.join(" ") || "");
 
-  function onSubmit() {
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     handleSubmit({
       ...organization,
-      shortname: organisationName,
+      shortName: organisationName,
       name: fullName,
       businessEntity: form,
-      type,
+      type: type.split(" "),
       contract: {
         no: contractNo,
         issue_date: contractDate,
@@ -47,9 +49,9 @@ function OrganizationUpdateModal({
     <AppModal isOpen={isOpen} onClose={handleClose}>
       <form className="organization-update__form" onSubmit={onSubmit}>
         <div className="organization-update__title">Общая информация</div>
-        <div className="organization-update__input-container">
+        <div className="app-input">
           <input
-            className="organization-update__input"
+            className="app-input__item"
             value={organisationName}
             required
             type="text"
@@ -57,13 +59,11 @@ function OrganizationUpdateModal({
               setOrganisationName(event.target.value);
             }}
           />
-          <span className="organization-update__label">
-            Название организации
-          </span>
+          <span className="app-input__label">Название организации</span>
         </div>
-        <div className="organization-update__input-container">
+        <div className="app-input">
           <input
-            className="organization-update__input"
+            className="app-input__item"
             value={fullName}
             required
             type="text"
@@ -71,11 +71,11 @@ function OrganizationUpdateModal({
               setFullName(event.target.value);
             }}
           />
-          <span className="organization-update__label">Полное название</span>
+          <span className="app-input__label">Полное название</span>
         </div>
-        <div className="organization-update__input-container">
+        <div className="app-input">
           <input
-            className="organization-update__input"
+            className="app-input__item"
             value={contractNo}
             required
             type="text"
@@ -83,11 +83,11 @@ function OrganizationUpdateModal({
               setContractNo(event.target.value);
             }}
           />
-          <span className="organization-update__label">Договор</span>
+          <span className="app-input__label">Договор</span>
         </div>
-        <div className="organization-update__input-container">
+        <div className="app-input">
           <input
-            className="organization-update__input"
+            className="app-input__item"
             value={contractDate}
             required
             type="date"
@@ -95,11 +95,11 @@ function OrganizationUpdateModal({
               setContractDate(event.target.value);
             }}
           />
-          <span className="organization-update__label">Дата договора</span>
+          <span className="app-input__label">Дата договора</span>
         </div>
-        <div className="organization-update__input-container">
+        <div className="app-input">
           <input
-            className="organization-update__input"
+            className="app-input__item"
             value={form}
             required
             type="text"
@@ -107,11 +107,11 @@ function OrganizationUpdateModal({
               setForm(event.target.value);
             }}
           />
-          <span className="organization-update__label">Форма</span>
+          <span className="app-input__label">Форма</span>
         </div>
-        <div className="organization-update__input-container">
+        <div className="app-input">
           <input
-            className="organization-update__input"
+            className="app-input__item"
             value={type}
             required
             type="text"
@@ -119,7 +119,7 @@ function OrganizationUpdateModal({
               setType(event.target.value);
             }}
           />
-          <span className="organization-update__label">Тип</span>
+          <span className="app-input__label">Тип</span>
         </div>
         <div className="organization-update__button-container row">
           <button

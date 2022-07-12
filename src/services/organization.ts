@@ -1,5 +1,4 @@
 import api from "./api";
-import { TOrganization } from "../types/organization";
 
 type TAuthParams = {
   user: string;
@@ -14,7 +13,7 @@ export const getOrganizationRequest = (organizationId: number) => {
 
 export const updateOrganizationRequest = (
   organizationId: number,
-  params: TOrganization
+  params: FormData
 ) => {
   return api.patch(`/companies/${organizationId}`, params);
 };
