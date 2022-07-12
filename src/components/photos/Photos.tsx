@@ -7,7 +7,6 @@ import { TPhoto } from "../../types/organization";
 import "./photos.css";
 
 import XIcon from "../../assets/icons/x-icon.svg";
-import AddIcon from "../../assets/icons/add.svg";
 
 type TProps = {
   photos: TPhoto[];
@@ -39,7 +38,7 @@ function Photos({ photos, organizationId, addPhoto, removePhoto }: TProps) {
   }
 
   return (
-    <div className="photos divider_bottom">
+    <div className="photos divider--bottom">
       <h2 className="title">ПРИЛОЖЕННЫЕ ФОТО</h2>
       <div className="photos__body">
         {photos.map((photo, index) => (
@@ -64,7 +63,6 @@ function Photos({ photos, organizationId, addPhoto, removePhoto }: TProps) {
       </div>
       <div>
         <label htmlFor="imageUpload" className="btn photos__add-btn">
-          {/* <img src={AddIcon} alt="Plus" /> */}
           ДОБАВИТЬ ИЗОБРАЖЕНИЕ
           <input id="imageUpload" type="file" hidden onChange={onFileSelect} />
         </label>

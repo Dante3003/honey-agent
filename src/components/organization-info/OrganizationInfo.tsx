@@ -11,7 +11,7 @@ type TProps = {
 
 function OrganizationInfo({ organization, openUpdateModal }: TProps) {
   return (
-    <div className="organization-info">
+    <div className="organization-info divider--bottom">
       <div className="row organization-info__title">
         <h2>{organization.shortName}</h2>
         <button onClick={openUpdateModal}>

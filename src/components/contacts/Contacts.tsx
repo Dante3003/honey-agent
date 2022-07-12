@@ -39,7 +39,7 @@ function Contacts({ contactId }: TProps) {
   }
 
   return (
-    <div className="contacts divider_bottom">
+    <div className="contacts divider--bottom">
       <div className="contacts__title">
         <h2 className="title">КОНТАКТНЫЕ ДАННЫЕ</h2>
         <button onClick={() => setIsUpdateModalOpen(true)}>
